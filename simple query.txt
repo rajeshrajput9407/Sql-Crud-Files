@@ -1,0 +1,132 @@
+/***** Script for SelectTopNRows command from SSMS  *****/
+SELECT TOP (1000) [id]
+      ,[name]
+      ,[salary]
+  FROM [w3school].[dbo].[demo]
+
+  update demo set salary=salary+1
+
+  select * from demo where not id=5 and  id=6
+  select * from demo where not id=5 and not id=6
+  select * from demo where  id=5 or id=6
+  select * from demo where   id=5 or not id=6
+  
+  select * from demo order by salary desc
+  select * from demo order by salary
+   select top 3 *  from demo order by salary  desc
+   select top 3 *  from demo order by salary 
+
+   
+
+   SELECT TOP 1 salary FROM (
+   SELECT TOP 3 salary 
+   FROM demo 
+   ORDER BY salary DESC) AS emp 
+ORDER BY salary DESC
+
+select * from demo order by salary desc
+
+select name ,salary from (
+	  select name ,salary ,ROW_NUMBER() over ( order by salary desc) as rowid from demo
+	  ) as a where rowid=2 
+
+	  select name ,salary from (
+	  select name ,salary ,ROW_NUMBER() over ( order by salary desc) as rowid from demo
+	  ) as a where rowid>2 and rowid<8
+
+	  insert into demo (id,name)values(22,'yy')
+
+	  SELECT TOP 30 PERCENT * FROM demo order by salary desc;
+
+	  select * from demo
+   select min(name) as smallest  from demo
+   select max(name) as largest from demo
+
+ select min(salary) as smallest  from demo
+   select max(salary) as largest from demo
+
+   select count(*)
+  from demo
+
+   select count(name)  from demo
+   select count(*)
+  from demo
+
+   select AVG(salary) from demo
+
+   select sum(salary) as total from demo
+
+   select count(id) as totalids from demo
+
+   select * from demo
+   select * from demo where name like 'w%'
+    select * from demo where name like '%a%'
+	select * from demo where name like '%ra%'
+	select * from demo where name like '_a%'
+
+	select * from demo where name like 'a_%_%'
+
+	
+	select * from demo where name like 'R%h'
+
+
+	select * from demo where salary not in (select salary from demo)
+
+	select * from demo where salary not in (23)
+
+	select * from demo where salary BETWEEN 1 and 110
+
+	select * from demo where (salary BETWEEN 1 and 110) and  id in (1,2,3)
+
+	select * from demo where (salary BETWEEN 1 and 110) and  id not in (1,2,3)
+
+	select * from demo where (salary BETWEEN 1 and 110) and id=2
+
+	select * from demo where name between 'Raj' and 'www' order by name desc
+
+	SELECT * FROM demo
+	WHERE date between  01/01/1996 AND 30/12/1999;
+SELECT * FROM Orders
+WHERE OrderDate BETWEEN '07/04/1996' AND '07/09/1996';
+
+select * from sys.tables
+
+select * from demo1
+
+select * from demo
+
+select * from demo where id in (select demoid from demo1)
+
+select * from demo as d,demo1 as d1  where d.id = d1.demoid 
+
+select * from demo inner join demo1 on demo.id = demo1.demoid
+
+select * from  demo inner join  demo3 on demo.id=demo3.id
+
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+
+select * from demo
+
+select * from demo1
+
+select * from demo3
+
+select * from demo inner join demo1 on demo.demo1id=demo1.demoid)
+
+select * from ((demo inner join demo1 on demo.demo1id=demo1.demoid) inner join demo3 on demo.demo3id=demo3.id)
+
+select * from (demo left join demo1 on demo.demo1id=demo1.demoid)
+
+select * from ((demo left join demo1 on demo.demo1id=demo1.demoid) left join demo3 on demo.demo3id=demo3.id)
+
+select * from (demo right join demo1 on demo.demo1id=demo1.demoid)
+
+select * from ((demo right join demo1 on demo.demo1id=demo1.demoid) right join demo3 on demo.demo3id=demo3.id)
+
+select * from demo
+select * from demo1
+
+select * from demo full outer join demo1 on  demo.demo1id=demo1.demoid
