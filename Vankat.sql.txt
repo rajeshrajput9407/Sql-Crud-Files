@@ -1,0 +1,117 @@
+insert into test(Name) values('Rajesh2')
+select SCOPE_IDENTITY() as id
+select @@IDENTITY
+
+create trigger mytrigger on test for insert
+as
+ begin 
+
+ insert into test1 values('hello')
+
+ end
+
+ insert into test(Name) values('Rajesh2')
+ select * from test
+ select * from test1
+
+ create table test3
+ (
+id int  not null primary key identity(1,1),
+ name varchar(20)  not null
+ )
+
+ alter table test3 
+ add constraint  UQ_con unique (name) 
+
+ select * from test3
+
+ alter table test 
+ add Salary int 
+
+ select * from test
+
+ truncate table test
+ insert into test values('Rajesh',2000)
+ insert into test values('Rajesh2',120)
+insert into test values('Rajesh3',3212)
+insert into test values('Rajesh4',8712)
+insert into test values('Rajesh5',320)
+insert into test values('Rajesh6',888)
+insert into test values('Rajesh7',8801)
+
+
+ alter table test drop column cid
+
+  select * from test
+
+  select name ,sum(salary) as totalSalary,count(salary) as countNo  from test group by Name
+
+
+  create table TblEmployee
+  (
+  ID int not null primary key identity(1,1),
+  Name varchar(50),
+  Salary int ,
+  DepartmentId int foreign key references TblDepartment(Id)
+  )
+
+  create table TblDepartment
+  (
+  Id int not null primary key identity (1,1),
+  DepartmentName varchar(100),
+  Location varchar(200),
+  DepartmentHead varchar(200)
+  )
+
+    insert into TblDepartment values('Java' , 'Noida' ,'Up')
+    insert into TblDepartment values('c++' , 'delhi' ,'mp')
+    insert into TblDepartment values('c' , 'pune' ,'Bhopal')
+    insert into TblDepartment values('micro' , 'bangalore' ,'Bhind')
+    insert into TblDepartment values('php' , 'gwalior' ,'Sikkim')
+	
+	insert into TblEmployee  values('Rajesh' ,3000, 2 )
+		insert into TblEmployee  values('Raj' ,4000, 2 )
+			insert into TblEmployee  values('Rajesh2' ,1211, 1 )
+				insert into TblEmployee  values('Rajesh4' ,9888, 3 )
+					insert into TblEmployee  values('Rajesh5' ,6678, 2 )
+
+					                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+		Select EmployeeFirstName,EmployeeLastName,sum(SalesTotal)
+		from Employee inner join Sales on EmployeeID= SalesEmployeeID
+		group by EmployeeFirstName,EmployeeLastName,SalesTotal
+
+		 select DepartmentName,Name ,DepartmentId from TblDepartment
+		 inner join TblEmployee on TblDepartment.Id=TblEmployee.DepartmentId
+
+	 select  DepartmentName,Name ,DepartmentId  from TblDepartment
+		 inner join TblEmployee on TblDepartment.Id =TblEmployee.DepartmentId
+		
+		select * from TblDepartment
+		select * from TblEmployee
+
+
+		select * from TblEmployee where DepartmentId  in  (select ID from TblDepartment )order by Salary desc
+
+		select * from TblDepartment where Id not in  (select DepartmentId from TblEmployee )
+
+		select orders.Id ,Customers.Name,Shipper.Name from ((orders inner join customers on orders.customerid=customers.id)inner join shippers on orders.shipperid=shippers.shipperid)
+
+		select  TblDepartment.DepartmentName,TblEmployee.Name ,TblEmployee.DepartmentId  from TblDepartment
+	    left join TblEmployee on TblDepartment.Id =TblEmployee.DepartmentId
+
+	    select  TblDepartment.DepartmentName,TblEmployee.Name ,TblEmployee.DepartmentId  from TblDepartment
+	    full outer join TblEmployee on TblDepartment.Id =TblEmployee.DepartmentId
+
+		select  TblDepartment.DepartmentName,count(TblEmployee.Name) ,count(TblEmployee.DepartmentId)  from TblDepartment
+	    cross join TblEmployee group by TblDepartment.DepartmentName 
+
+				select  TblDepartment.DepartmentName,TblEmployee.Name ,TblEmployee.DepartmentId  from TblDepartment
+	    cross join TblEmployee 
+
+
+		
+
+
+
+

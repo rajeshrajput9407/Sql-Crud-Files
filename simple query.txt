@@ -130,3 +130,11 @@ select * from demo
 select * from demo1
 
 select * from demo full outer join demo1 on  demo.demo1id=demo1.demoid
+
+********Group By*******
+Group bu statement is often used with aggregate functions like count ,max ,min ,sum ,avg to group the result set by one or more columns
+
+select count(Customerid),country from customers group by country
+
+and
+select count(Customerid),country from customers group by country order by count(Customerid) desc
