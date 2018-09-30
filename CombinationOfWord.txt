@@ -1,0 +1,55 @@
+using System;
+
+namespace RamIteration
+{
+    class myclass
+    {
+        
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Please Enter Your Word :");
+            string Word = Console.ReadLine();
+            int totalCombination = 1;
+            string temp;
+            int i, j;
+
+            totalCombination = Word.Length * (Word.Length - 1);
+            Console.WriteLine("Total word itterations:" + totalCombination);
+
+            Console.WriteLine("Length of Word: " + Word.Length);
+            string[] myarray = new string[Word.Length];
+
+            for (int a = 0; a < Word.Length; a++)
+            {
+                myarray[a] = Word[a].ToString();
+            }
+
+            for (j = 1; j <= Word.Length; j++)
+            {
+                for (i = 0; i < Word.Length - 1; i++)
+                {
+                    temp = myarray[i];
+                    myarray[i] = myarray[i + 1];
+                    myarray[i + 1] = temp;
+
+                    int m;
+                    for (m = 0; m < Word.Length; m++)
+                    { 
+                        Console.Write(myarray[m]);
+                    }
+                    Console.WriteLine("");
+
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+
+ }
+   
+
