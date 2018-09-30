@@ -69,11 +69,11 @@ insert into test values('Rajesh7',8801)
     insert into TblDepartment values('micro' , 'bangalore' ,'Bhind')
     insert into TblDepartment values('php' , 'gwalior' ,'Sikkim')
 	
-	insert into TblEmployee  values('Rajesh' ,3000, 2 )
-		insert into TblEmployee  values('Raj' ,4000, 2 )
-			insert into TblEmployee  values('Rajesh2' ,1211, 1 )
-				insert into TblEmployee  values('Rajesh4' ,9888, 3 )
-					insert into TblEmployee  values('Rajesh5' ,6678, 2 )
+	insert into TblEmployee  values('Rajesh' ,3000, 20 )
+	insert into TblEmployee  values('Raj' ,4000, 27 )
+	insert into TblEmployee  values('Rajesh2' ,1211, 1 )
+	insert into TblEmployee  values('Rajesh4' ,9888, 3 )
+	insert into TblEmployee  values('Rajesh5' ,6678, 2 )
 
 					                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
@@ -106,10 +106,70 @@ insert into test values('Rajesh7',8801)
 		select  TblDepartment.DepartmentName,count(TblEmployee.Name) ,count(TblEmployee.DepartmentId)  from TblDepartment
 	    cross join TblEmployee group by TblDepartment.DepartmentName 
 
-				select  TblDepartment.DepartmentName,TblEmployee.Name ,TblEmployee.DepartmentId  from TblDepartment
+		select  TblDepartment.DepartmentName,TblEmployee.Name ,TblEmployee.DepartmentId  from TblDepartment
 	    cross join TblEmployee 
 
 
+	13 video:
+		
+		select  TblDepartment.DepartmentName,TblEmployee.Name ,TblEmployee.DepartmentId  from TblDepartment
+	    left join TblEmployee on TblDepartment.Id =TblEmployee.DepartmentId where TblEmployee.Name is null
+
+
+		select  DepartmentName, Name , DepartmentId  from TblDepartment
+	    inner join TblEmployee on TblDepartment.Id =TblEmployee.DepartmentId  
+
+		 select  DepartmentName,Name ,DepartmentId  from TblEmployee 
+		 inner join TblDepartment on TblDepartment.Id =TblEmployee.DepartmentId
+
+		 select  DepartmentName, Name , DepartmentId  from TblDepartment
+	     right join TblEmployee on TblDepartment.Id =TblEmployee.DepartmentId
+		  
+		  truncate table TblDepartment
+
+		 select * from TblEmployee
+		 select * from TblDepartment
+
+		 select  DepartmentName, Name , DepartmentId  from TblDepartment
+	     left join TblEmployee on TblDepartment.Id =TblEmployee.DepartmentId  
+
+		 select  DepartmentName,Name ,DepartmentId  from TblEmployee 
+		 right join TblDepartment on TblDepartment.Id =TblEmployee.DepartmentId
+
+		  select * from TblEmployee
+
+		  select * from TblDepartment
+		  
+		  alter table TblEmployee drop constraint FK__TblEmploy__Depar__18E19391
+
+		 select  DepartmentName,Name ,DepartmentId  from TblEmployee 
+		 right join TblDepartment on TblDepartment.Id =TblEmployee.DepartmentId where TblEmployee.DepartmentId is null
+
+		 ///////////////
+		  select * from TblEmployee
+		  select * from TblDepartment
+
+		  --not match in TblEmployee using inner join
+
+		  select * from TblEmployee where Id not in (
+		  select TblEmployee.Id  from TblEmployee 
+		  inner join TblDepartment on TblDepartment.Id =TblEmployee.DepartmentId)
+
+		 -- not match from TblDepartment using inner join 
+
+		  select * from TblDepartment where Id not in (
+		  select TblDepartment.Id  from TblEmployee 
+		  inner join TblDepartment on TblDepartment.Id =TblEmployee.DepartmentId)
+
+		  /////////////
+
+		  select  TblDepartment.Id, DepartmentName  from TblEmployee 
+		 right join TblDepartment on TblEmployee.DepartmentId =TblDepartment.Id where TblEmployee.Name is null
+
+		  select  *  from  TblDepartment
+		 right join TblEmployee  on TblDepartment.Id=TblEmployee.DepartmentId where DepartmentName is null
+
+		 
 		
 
 
